@@ -26,12 +26,6 @@ export default function Home() {
 					<LinkCard href='/statistics' linkText="Statistics" text="View pretty graphs of dat money."/>
 				</div>		
 			</main>
-
-			<footer className={styles.footer}>
-				<a href="https://github.com/dcronqvist">
-					github profile
-				</a>
-			</footer>
 		</div>
 	)
 }
