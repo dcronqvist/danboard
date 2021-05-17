@@ -1,0 +1,36 @@
+.card {
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 1.5rem;
+    border-radius: 0.7rem;
+    width: 45%;
+    margin: 2%;
+    box-shadow: 5px 6px 17px 2px rgba(137,137,137,0.3);
+}
+
+.link {
+    margin: 0;
+    padding: 0;
+    color: #0070f3;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.text {
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+    text-decoration: none;
+}
+
+
+@media (max-width: 600px) {
+    .card {
+      width: 80%;
+    }
+}
