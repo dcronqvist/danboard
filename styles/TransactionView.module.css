@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.small {
+    flex-basis: 10%;
+}
+
+.medium {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.big {
+    flex-basis: 30%;
+}
+
+.only_enough {
+    flex-basis: fit-content;
+}
+
+.container:not(:last-child) {
+    border-bottom: 1px solid grey;
+}

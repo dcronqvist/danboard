@@ -14,7 +14,7 @@
     color: #0070f3;
     text-decoration: none;
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .link:hover {
@@ -26,6 +26,7 @@
     padding: 0;
     padding-top: 1rem;
     text-decoration: none;
+    font-weight: 300;
 }
 
 
