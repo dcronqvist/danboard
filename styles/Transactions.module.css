@@ -28,10 +28,22 @@
     overflow-x: hidden;
 }
 
-.main h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    display: inline;
-    margin-bottom: 1.2rem;
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5rem;
 }
+
+.head h1 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+}
+
+.datepicker {
+    width: 20%;
+}
+
