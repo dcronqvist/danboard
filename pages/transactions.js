@@ -5,7 +5,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker'
 const axios = require('axios').default;
 
-const token = "c60f9280-921c-4bf6-872d-af8d9dadf12c"
+const token = "c52b6ef7-d65a-4b90-a1b9-8e0222848621"
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([])
