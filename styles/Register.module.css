@@ -6,6 +6,7 @@
 }
 
 .main {
+    padding: 1.5rem;
     width: 50%;
     height: 50%;
     box-shadow: 2px 2px 17px 2px rgba(137,137,137,0.3);
@@ -14,4 +15,61 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.head h1 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.2rem;
+}
+
+.registration {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    width: 100%;
+}
+
+.inputcontainer {
+    width: 40%;
+}
+
+.registration label {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.inputfield {
+    border-radius: 0.3rem;
+    box-shadow: 2px 2px 5px 2px rgba(137,137,137,0.3);
+    border: 0;
+    padding: 0.3rem;
+}
+
+.small {
+    width: 5rem;
+}
+
+.medium {
+    width: 8rem;
+}
+
+.big {
+    width: 12rem;
+}
+
+.inputrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
