@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Switch } from "react-router-dom"
-import LoginPage from "src/pages/login"
+import LoginPage from "src/pages/Login"
 import { useAuthorization } from "./contexts/AuthorizationContext"
 
 function App(): JSX.Element {
