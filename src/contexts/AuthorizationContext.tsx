@@ -7,6 +7,7 @@ type AuthorizationContextType = {
   accessToken: string
   performLogin: (username: string, password: string) => void
   loading: boolean
+  username: string
 }
 
 const authorizationContextDefaultValues: AuthorizationContextType = {
@@ -16,13 +17,14 @@ const authorizationContextDefaultValues: AuthorizationContextType = {
     return undefined
   },
   loading: true,
+  username: "",
 }
 
 const AuthorizationContext = createContext<AuthorizationContextType>(
   authorizationContextDefaultValues
 )
 
-export function useAuthorization(): AuthorizationContextType {
+export function useAuth(): AuthorizationContextType {
   return useContext(AuthorizationContext)
 }
 
@@ -37,6 +39,7 @@ export const AuthorizationProvider = ({
   const [accessToken, setAccessToken] = useState(
     authorizationContextDefaultValues.accessToken
   )
+  const [username, setUsername] = useState("")
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -52,8 +55,10 @@ export const AuthorizationProvider = ({
           },
         })
         .then((response) => {
+          console.log(response)
           if (response.status === 200) {
             setIsAuthorized(true)
+            setUsername(response.data.username)
             setLoading(false)
           } else {
             setIsAuthorized(false)
@@ -87,6 +92,7 @@ export const AuthorizationProvider = ({
         if (response.status === 200) {
           localStorage.setItem("access_token", response.data.token.token)
           setAccessToken(response.data.token.token)
+          setUsername(response.data.username)
           setIsAuthorized(true)
         } else {
           setIsAuthorized(false)
@@ -102,6 +108,7 @@ export const AuthorizationProvider = ({
     accessToken: accessToken,
     performLogin: performLogin,
     loading: loading,
+    username: username,
   }
 
   return (

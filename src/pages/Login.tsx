@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet"
 import React, { useState } from "react"
-import { useAuthorization } from "src/contexts/AuthorizationContext"
+import { useAuth } from "src/contexts/AuthorizationContext"
 
 const LoginPage = (): JSX.Element => {
-  const { performLogin } = useAuthorization()
+  const { performLogin } = useAuth()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
