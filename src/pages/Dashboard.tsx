@@ -1,7 +1,13 @@
+import { useQuery } from "@apollo/client"
 import React from "react"
-import { useState, useEffect } from "react"
-import { useAuth } from "src/contexts/AuthorizationContext"
-import { getCurrentPeriod, Period } from "src/model/periods"
+import {
+  GET_PERIOD,
+  GET_PERIOD_DATA,
+  GET_PERIOD_VARS,
+  GET_TRANSACTIONS,
+  GET_TRANSACTIONS_DATA,
+  GET_TRANSACTIONS_VARS,
+} from "src/model/queries"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -71,17 +77,23 @@ export type DashboardProps = {
 
 const Dashboard: React.FC<DashboardProps> = ({ setPage }: DashboardProps) => {
   setPage("dashboard")
-
-  const { accessToken } = useAuth()
-  const [currentPeriod, setCurrentPeriod] = useState<Period | undefined>(
-    undefined
+  const currentPeriod = useQuery<GET_PERIOD_DATA, GET_PERIOD_VARS>(GET_PERIOD, {
+    variables: {
+      year: [2020],
+      month: [7],
+    },
+  })
+  const transactions = useQuery<GET_TRANSACTIONS_DATA, GET_TRANSACTIONS_VARS>(
+    GET_TRANSACTIONS,
+    {
+      variables: {
+        startDate: currentPeriod.data?.periods[0].startTimestamp,
+        endDate: currentPeriod.data?.periods[0].endTimestamp,
+      },
+    }
   )
 
-  useEffect(() => {
-    getCurrentPeriod(accessToken).then((period) => {
-      setCurrentPeriod(period)
-    })
-  }, [])
+  console.log(transactions.data)
 
   return (
     <Wrapper>
@@ -89,7 +101,9 @@ const Dashboard: React.FC<DashboardProps> = ({ setPage }: DashboardProps) => {
         <DashbordItemAmount>12 842 kr</DashbordItemAmount>
       </DashbardItem>
       <DashbardItem title={"expenses this period"} x={2} y={1} w={1} h={1}>
-        {currentPeriod?.year}
+        {transactions.data?.transactions.reduce((acc, cur) => {
+          return acc + (cur.fromAccount.number === 101 ? cur.amount : 0)
+        }, 0)}
       </DashbardItem>
     </Wrapper>
   )

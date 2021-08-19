@@ -87,8 +87,6 @@ export const AuthorizationProvider = ({
         password,
       })
       .then((response) => {
-        console.log(response)
-
         if (response.status === 200) {
           localStorage.setItem("access_token", response.data.token.token)
           setAccessToken(response.data.token.token)

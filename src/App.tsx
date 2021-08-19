@@ -8,6 +8,17 @@ import { createGlobalStyle } from "styled-components"
 import { Helmet } from "react-helmet"
 import Layout from "./components/Layout"
 import { useState } from "react"
+import {
+  ApolloClient,
+  ApolloLink,
+  ApolloProvider,
+  InMemoryCache,
+} from "@apollo/client"
+
+const apolloClient = new ApolloClient({
+  uri: "https://api.dcronqvist.se/v1/graphql",
+  cache: new InMemoryCache(),
+})
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,11 +29,18 @@ const GlobalStyle = createGlobalStyle`
 `
 
 function App(): JSX.Element {
-  const { isAuthorized, loading } = useAuth()
+  const { isAuthorized, loading, accessToken } = useAuth()
   const [currentPage, setCurrentPage] = useState<string>("")
+  const apolloClient = new ApolloClient({
+    uri: "https://api.dcronqvist.se/v1/graphql",
+    cache: new InMemoryCache(),
+    headers: {
+      Authorization: accessToken,
+    },
+  })
 
   return (
-    <>
+    <ApolloProvider client={apolloClient}>
       <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -55,7 +73,7 @@ function App(): JSX.Element {
           </Layout>
         </Router>
       )}
-    </>
+    </ApolloProvider>
   )
 }
 
