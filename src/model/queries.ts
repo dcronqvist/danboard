@@ -70,3 +70,31 @@ export const GET_TRANSACTIONS = gql`
     }
   }
 `
+
+// ----------------------------------------------
+
+export type GET_FROM_TO_DATA = {
+  fromTo: {
+    amount: number,
+    amountOfTransactions: number,
+  }
+}
+
+export type GET_FROM_TO_VARS = {
+  fromAccount?: {
+    number: number
+  }
+
+  toAccount?: {
+    number: number
+  }
+}
+
+export const GET_FROM_TO = gql`
+  query GetFromTo($fromAccount: AccountInput, $toAccount: AccountInput) {
+    fromTo(fromAccount: $fromAccount, toAccount: $toAccount) {
+      amount
+      amountOfTransactions
+    }
+  }
+`

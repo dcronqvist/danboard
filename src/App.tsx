@@ -15,11 +15,6 @@ import {
   InMemoryCache,
 } from "@apollo/client"
 
-const apolloClient = new ApolloClient({
-  uri: "https://api.dcronqvist.se/v1/graphql",
-  cache: new InMemoryCache(),
-})
-
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Poppins', sans-serif;
